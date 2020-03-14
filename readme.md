@@ -93,10 +93,17 @@ The entire model should be completely reproducible - to score this the teacher w
 
 Commit early and often
 
-Visualize early
+Notebooks don't merge easily!
 
-Ensemble
+Visualize early
 
 Look at the predictions your model is getting wrong - can you engineer a feature for those samples?
 
-A well tuned random forest should be the baseline
+Models
+- baseline (average sales per store from in training data)
+- random forest
+- XGBoost
+
+Use your DSR instructor(s)
+- you are not alone - they are here to help with both bugs and data science advice
+- git issues, structuring the data on disk, models to try, notebook problems and conda problems are all things we have seen before
