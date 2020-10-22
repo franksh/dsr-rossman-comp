@@ -57,7 +57,17 @@ Promo2Since[Year/Week] - describes the year and calendar week when the store sta
 PromoInterval - describes the consecutive intervals Promo2 is started, naming the months the promotion is started anew. E.g. "Feb,May,Aug,Nov" means each round starts in February, May, August, November of any given year for that store
 ```
 
-The test period is from 2014-08-01 to 2015-07-31 - the test dataset is the same format as `train.csv`.
+The holdout test period is from 2014-08-01 to 2015-07-31 - the holdout test dataset is the same format as `train.csv`, as is called `holdout.csv`.
+
+After running `python data.py -- test 1`, the folder `data` will look like:
+
+```bash
+data
+├── holdout.csv
+├── rossmann-store-sales.zip
+├── store.csv
+└── train.csv
+```
 
 ## Scoring Criteria
 
@@ -79,7 +89,7 @@ def metric(preds, actuals):
     return 100 * np.linalg.norm((actuals - preds) / actuals) / np.sqrt(preds.shape[0])
 ```
 
-Zero sales days are ignored in scoring.
+Zero sales days are ignored in scoring - part of your pipeline should look for these rows and drop them (in both test & train)
 
 The team scores will be ranked - the highest score (lowest RMSPE) will receive a score of 10 for the scoring criteria section.
 

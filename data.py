@@ -46,4 +46,4 @@ if __name__ == '__main__':
     shutil.rmtree('./data/raw')
 
     if bool(int(args.test)):
-        test.to_csv('./data/test.csv')
+        test.to_csv('./data/holdout.csv')
