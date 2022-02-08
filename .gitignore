@@ -1,5 +1,6 @@
 **.swp
 **.csv
+!data/store_info.csv
 .python-version
 
 
