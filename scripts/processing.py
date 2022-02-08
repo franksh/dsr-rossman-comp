@@ -25,13 +25,23 @@ def add_store_info(train):
     train = pd.merge(left=train, right=store_info, how='left', on='Store')
     return train
 
+def add_week_month_info(train):
+    """
+    Add week and month information as another column to the features
+    """
+    
+    train.loc[:,'week'] = train.loc[:,'Date'].dt.week
+    train.loc[:,'month'] = train.loc[:,'Date'].dt.month
+    return train
+
+    
 def process_data(train_raw, drop_null=True):
     """ Data Processing """
     train = train_raw.copy()
     train.loc[:, 'StateHoliday'] = train.loc[:, 'StateHoliday'].replace(to_replace='0', value='d')
 
-    # Drop customers
-    train = train.drop("Customers", axis=1)
+    # Drop customers and Date
+    train = train.drop(["Customers","Date"], axis=1)
 
     # Encode StateHoliday
     le = LabelEncoder()
@@ -46,3 +56,4 @@ def process_data(train_raw, drop_null=True):
         train = train.dropna(axis=0, how='any')
 
     return train
+
