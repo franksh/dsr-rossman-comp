@@ -14,7 +14,18 @@ def load_train_data():
                     })
     return train_raw
 
-def process_data(train_raw):
+def add_store_info(train):
+    """ Add the store info to sales data.
+
+    Merges the store info on the train table and returns the combined table
+    """
+    # Load store info
+    store_info = pd.read_csv("../data/store_info.csv")
+    # Merge store info onto train data
+    train = pd.merge(left=train, right=store_info, how='left', on='Store')
+    return train
+
+def process_data(train_raw, drop_null=True):
     """ Data Processing """
     train = train_raw.copy()
     train.loc[:, 'StateHoliday'] = train.loc[:, 'StateHoliday'].replace(to_replace='0', value='d')
@@ -31,6 +42,7 @@ def process_data(train_raw):
     train = train.loc[train.loc[:, 'Sales']!=0, :]
 
     # Drop all null value
-    train = train.dropna(axis=0, how='any')
+    if drop_null:
+        train = train.dropna(axis=0, how='any')
 
     return train
