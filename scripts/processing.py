@@ -22,7 +22,7 @@ def add_store_info(train):
     # Load store info
     store_info = pd.read_csv("../data/store_info.csv")
     # Merge store info onto train data
-    train = pd.merge(left=train, right=store_info, how='left', on='Store')
+    train = pd.merge(left=train, right=store_info, how='left', on=['Store', 'month'])
     return train
 
 def add_week_month_info(train):
