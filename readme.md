@@ -11,9 +11,24 @@ Create a virtual environment, and install the required packages using
 pip -r requirements.txt
 ```
 
-Then pre-process the data
+## ToDo
 
-## Notes
+### High priority
+
+- Train Test Split
+- Hyperparameter Optimization of Random Forest
+- Add features
+  - Days to January, Days to Christmas
+  - Deal with holidays better
+- Encode Data better
+- Do prediction and upload Kaggle
+- Set up a clean data processing pipeline
+
+### Low priority
+
+- Explore data better
+- Linear Regression
+- Look at feature importance
 
 ## Setup
 
