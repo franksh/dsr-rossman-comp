@@ -11,6 +11,23 @@ Create a virtual environment, and install the required packages using
 pip -r requirements.txt
 ```
 
+## Creating a Prediction
+
+To create a model prediction and Kaggle submission file, run:
+
+```bash
+cd scripts
+python create_submission.py --pipeline=pipeline_name
+```
+
+Different trained pipelines (including the model)
+are stored under `/data/trained_pipelines/`.
+
+You can specify which pipeline to use for the submission.
+
+If you pass `best` or no argument, the best current
+model is used.
+
 ## ToDo
 
 ### High priority
