@@ -12,7 +12,7 @@ Arguments:
 import argparse
 import numpy as np
 from pipeline import load_pipeline
-from processing import load_holdout_data, process_data, add_store_info, add_week_month_info
+from processing import load_holdout_data, process_data, add_store_info, add_week_month_info, add_beginning_end_month
 
 current_best_pipeline = 'random_forest_1'
 
@@ -32,14 +32,20 @@ if __name__ == '__main__':
 
     # Load and process holdout data
     holdout_raw = load_holdout_data()
-    print(len(holdout_raw))
+    # breakpoint()
+
+    holdout_id = holdout_raw.iloc[:, 0] + 1
+    # breakpoint()
+    holdout_raw = holdout_raw.iloc[:, 1:]
+
+    # holdout_raw = holdout_raw.drop('Id', axis=1)
     holdout = add_week_month_info(holdout_raw)
-    print(len(holdout))
+    holdout = add_beginning_end_month(holdout)
     holdout = process_data(holdout)
-    print(len(holdout))
     holdout = add_store_info(holdout)
-    print(len(holdout))
-    breakpoint()
+
+    cols_to_drop = ['Open', 'StateHoliday', 'Assortment']
+    holdout = holdout.drop(cols_to_drop, axis=1)
 
 
     # Use the pipeline to predict on holdout
@@ -48,9 +54,10 @@ if __name__ == '__main__':
     y_pred = pipeline.predict(holdout)
 
     import pandas as pd
-    # result = pd.DataFrame({'Id': holdout['Store'], 'Sales': y_pred})
-    result = pd.DataFrame({'Id': np.arange(1,len(holdout)+1), 'Sales': y_pred})
+    result = pd.DataFrame({'Id': holdout_id, 'Sales': y_pred})
+    # result = pd.DataFrame({'Id': np.arange(1,len(holdout)+1), 'Sales': y_pred})
     result.to_csv('../data/submission.csv', index=False)
+
 
     # # Save the prediction
     # submission_path = "../data/submission.csv"

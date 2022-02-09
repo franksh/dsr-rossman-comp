@@ -37,18 +37,34 @@ def add_week_month_info(train):
     Add week and month information as another column to the features
     """
     
-    train.loc[:,'week'] = train.loc[:,'Date'].dt.isocalendar().week
+    train.loc[:,'week'] = train.loc[:,'Date'].dt.isocalendar().week.astype(int)
     train.loc[:,'month'] = train.loc[:,'Date'].dt.month
     return train
 
-    
-def process_data(train_raw, drop_null=True):
+def add_beginning_end_month(train):
+    """
+    Add features that represent the beginning and end of months
+    """
+    def get_feature_end_month(day_of_month):
+        return (day_of_month/31)**4
+
+    def get_feature_beginning_month(day_of_month):
+        return ((31-day_of_month)/31)**4
+
+    # get_feature_end_month(33)
+    train.loc[:, 'end_of_month'] = train.loc[:, 'Date'].dt.day.apply(get_feature_end_month)
+    train.loc[:, 'beginning_of_month'] = train.loc[:, 'Date'].dt.day.apply(get_feature_beginning_month)
+    return train
+        
+def process_data(train_raw, drop_null=True, drop_date=True):
     """ Data Processing """
     train = train_raw.copy()
     train.loc[:, 'StateHoliday'] = train.loc[:, 'StateHoliday'].replace(to_replace='0', value='d')
 
     # Drop customers and Date
-    train = train.drop(["Customers","Date"], axis=1)
+    train = train.drop("Customers", axis=1)
+    if drop_date:
+        train = train.drop("Date", axis=1)
 
     # Drop all where sales are nan or 0
     if 'Sales' in train.columns:
