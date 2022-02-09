@@ -36,14 +36,21 @@ if __name__ == '__main__':
     holdout = process_data(holdout)
     holdout = add_store_info(holdout)
 
+
     # Use the pipeline to predict on holdout
     print(f' - Predicting for pipeline "{name}"...')
+    # holdout = pipeline.transform(holdout)
     y_pred = pipeline.predict(holdout)
 
-    # Save the prediction
-    submission_path = "../data/submission.csv"
-    print(f' - Saving submission file at data/submission.csv')
-    np.savetxt(submission_path, y_pred, delimiter=",")
+    import pandas as pd
+    # result = pd.DataFrame({'Id': holdout['Store'], 'Sales': y_pred})
+    result = pd.DataFrame({'Id': np.arange(1,len(holdout)+1), 'Sales': y_pred})
+    result.to_csv('../data/submission.csv', index=False)
+
+    # # Save the prediction
+    # submission_path = "../data/submission.csv"
+    # print(f' - Saving submission file at data/submission.csv')
+    # np.savetxt(submission_path, y_pred, delimiter=",")
 
     
     
