@@ -1,9 +1,7 @@
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
 
-
-def test_function():
-    print("Testing")
 
 def load_train_data():
     train_raw = pd.read_csv("../data/train.csv", parse_dates=[0],
@@ -43,10 +41,6 @@ def process_data(train_raw, drop_null=True):
     # Drop customers and Date
     train = train.drop(["Customers","Date"], axis=1)
 
-    # Encode StateHoliday
-    le = LabelEncoder()
-    train.loc[:, 'StateHoliday'] = le.fit_transform(train.loc[:, 'StateHoliday'])
-
     # Drop all where sales are nan or 0
     train = train.dropna(axis=0, how='any', subset=['Sales'])
     train = train.loc[train.loc[:, 'Sales']!=0, :]
@@ -57,3 +51,9 @@ def process_data(train_raw, drop_null=True):
 
     return train
 
+
+def metric(preds, actuals):    
+    preds = preds.reshape(-1)
+    actuals = actuals.reshape(-1)
+    assert preds.shape == actuals.shape
+    return 100 * np.linalg.norm((actuals - preds) / actuals) / np.sqrt(preds.shape[0])
