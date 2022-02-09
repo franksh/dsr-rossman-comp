@@ -17,18 +17,23 @@ pip -r requirements.txt
 
 - Train Test Split
 - Hyperparameter Optimization of Random Forest
+- Write down what we did yesterday
 - Add features
   - Days to January, Days to Christmas
   - Deal with holidays better
-- Encode Data better
+  - Look at Promo2. Add feature whether store runs Promo.
+- Encode existing columns better
+  - Do frequency encoding of Store ID
 - Do prediction and upload Kaggle
 - Set up a clean data processing pipeline
 
 ### Low priority
 
 - Explore data better
-- Linear Regression
+- Try Linear Regression
+  - Do StandardScaling of Features
 - Look at feature importance
+- Look at bimodal distribution of days stores are open. Why?
 
 ## Setup
 
