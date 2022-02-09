@@ -15,7 +15,7 @@ def load_train_data():
 def load_holdout_data():
     holdout_raw = pd.read_csv("../data/holdout_b29.csv",
                     parse_dates=[1],
-                    index_col=0,
+                    # index_col=0,
                     dtype = {
                         'StateHoliday': str
                     })
@@ -37,7 +37,7 @@ def add_week_month_info(train):
     Add week and month information as another column to the features
     """
     
-    train.loc[:,'week'] = train.loc[:,'Date'].dt.week
+    train.loc[:,'week'] = train.loc[:,'Date'].dt.isocalendar().week
     train.loc[:,'month'] = train.loc[:,'Date'].dt.month
     return train
 

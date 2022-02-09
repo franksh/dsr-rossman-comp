@@ -32,9 +32,14 @@ if __name__ == '__main__':
 
     # Load and process holdout data
     holdout_raw = load_holdout_data()
+    print(len(holdout_raw))
     holdout = add_week_month_info(holdout_raw)
+    print(len(holdout))
     holdout = process_data(holdout)
+    print(len(holdout))
     holdout = add_store_info(holdout)
+    print(len(holdout))
+    breakpoint()
 
 
     # Use the pipeline to predict on holdout
