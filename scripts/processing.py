@@ -6,13 +6,21 @@ def test_function():
     print("Testing")
 
 def load_train_data():
-    train_raw = pd.read_csv("../data/train.csv", parse_dates=[0],
-                dtype={
-                    'StateHoliday': str,
-                    # 'Store': int,
-                    # 'DayOfWeek': int
+    train_raw = pd.read_csv("../data/train.csv",
+                    parse_dates=[0],
+                    dtype = {
+                        'StateHoliday': str,
                     })
     return train_raw
+
+def load_holdout_data():
+    holdout_raw = pd.read_csv("../data/holdout_b29.csv",
+                    parse_dates=[1],
+                    index_col=0,
+                    dtype = {
+                        'StateHoliday': str
+                    })
+    return holdout_raw
 
 def add_store_info(train):
     """ Add the store info to sales data.
@@ -48,8 +56,9 @@ def process_data(train_raw, drop_null=True):
     train.loc[:, 'StateHoliday'] = le.fit_transform(train.loc[:, 'StateHoliday'])
 
     # Drop all where sales are nan or 0
-    train = train.dropna(axis=0, how='any', subset=['Sales'])
-    train = train.loc[train.loc[:, 'Sales']!=0, :]
+    if 'Sales' in train.columns:
+        train = train.dropna(axis=0, how='any', subset=['Sales'])
+        train = train.loc[train.loc[:, 'Sales']!=0, :]
 
     # Drop all null value
     if drop_null:
