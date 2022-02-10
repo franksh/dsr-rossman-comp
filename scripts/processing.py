@@ -61,8 +61,8 @@ def process_data(train_raw, drop_null=True, drop_date=True):
     train = train_raw.copy()
     train.loc[:, 'StateHoliday'] = train.loc[:, 'StateHoliday'].replace(to_replace='0', value='d')
 
-    # Drop customers and Date
-    train = train.drop("Customers", axis=1)
+    # Drop customers, open and Date
+    train = train.drop(["Customers", "Open"], axis=1)
     if drop_date:
         train = train.drop("Date", axis=1)
 
