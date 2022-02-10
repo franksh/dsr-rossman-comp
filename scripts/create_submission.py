@@ -11,6 +11,7 @@ Arguments:
 """
 import argparse
 import numpy as np
+import pandas as pd
 from pipeline import load_pipeline
 from processing import load_holdout_data, process_data, add_store_info, add_week_month_info, add_beginning_end_month
 
@@ -54,7 +55,6 @@ if __name__ == '__main__':
     # holdout = pipeline.transform(holdout)
     y_pred = pipeline.predict(holdout)
 
-    import pandas as pd
     result = pd.DataFrame({'Id': holdout_id, 'Sales': y_pred})
     # result = pd.DataFrame({'Id': np.arange(1,len(holdout)+1), 'Sales': y_pred})
     result.to_csv('../data/submission.csv', index=False)
