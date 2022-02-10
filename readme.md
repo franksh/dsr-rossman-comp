@@ -52,7 +52,7 @@ conda activate rossman-comp
 Then install the required packages using
 
 ```bash
-pip -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Testing a model
