@@ -57,6 +57,8 @@ pip -r requirements.txt
 
 ### Testing a model
 
+The pre-trained models are stored under `data/trained_models/`
+
 To evaluate a model, run:
 
 ```bash
@@ -66,8 +68,6 @@ python score_on_holdout.py --holdout_path=path
 
 The `holdout_path` should point to a file
 containing holdout data in the correct format.
-
-The trained models are stored under `data/trained_models/`
 
 By default, the best trained model is used. You can
 specify a different model using the parameter `pipeline`.
