@@ -19,7 +19,7 @@ using the root mean square percentage error (RMSPE):
 ![](./assets/rmspe.png)
 
 A more detailed explanation of the model is given in the notebook
-[model_analysis](notebooks/model_analysis.ipynb)
+[model_analysis](notebooks/model_explanation.ipynb)
 
 Comparison of prediction vs. actual sales per day:
 
