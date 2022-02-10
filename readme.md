@@ -29,15 +29,27 @@ Comparison of prediction vs. actual sales per day:
 
 ### Setup
 
-Create a virtual environment, and install the required packages using
+First, clone and repository and enter it
+
+```bash
+git clone git@github.com:franksh/dsr-rossman-comp.git
+cd dsr-rossman-comp
+```
+
+Create a virtual environment using Python `3.8`, for example using `conda`.
+
+```bash
+conda create -n rossman-comp python=3.8
+conda activate rossman-comp
+```
+
+Then install the required packages using
 
 ```bash
 pip -r requirements.txt
 ```
 
 ### Testing a model
-
-The trained models are stored under `data/trained_models/`
 
 To evaluate a model, run:
 
@@ -48,6 +60,8 @@ python score_on_holdout.py --holdout_path=path
 
 The `holdout_path` should point to a file
 containing holdout data in the correct format.
+
+The trained models are stored under `data/trained_models/`
 
 By default, the best trained model is used. You can
 specify a different model using the parameter `pipeline`.
