@@ -57,18 +57,17 @@ model is used.
 ### High priority
 
 - Hyperparameter Optimization of LightGBM (GridCV)
-- TargetEncode Everything
-- Do StandardScaling of Features
-- Add month end, month beginning
-- Add more time frequency variables
-- Days to January, Days to Christmas
-- Encode holidays better
-  - Look at Promo2. Add feature whether store runs Promo.
+- TargetEncode and Standardscale Everything
 - Update Readme
+- Upsample second half of the year
 
-### Mediuam priority
+### Medium priority
 
 - Plot residuals of the prediction
+- Encode holidays better
+  - Look at Promo2. Add feature whether store runs Promo.
+- Add more time frequency variables
+- Add a feature for total days that have passed
 
 ### Low priority
 
@@ -79,6 +78,7 @@ model is used.
 
 ### Done
 
+- Add month end, month beginning
 - Target encoding of store ID
 - Train Test Split
 - Do prediction and upload Kaggle
