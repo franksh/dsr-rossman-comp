@@ -1,9 +1,29 @@
-## Rossman Kaggle Mini-Competition
+# Rossman Kaggle Mini-Competition
 
 This mini competition is adapted from the Kaggle Rossman challenge.
-The goal is to predict the sales number of Rossman stores.
+The goal is to predict the sales number of Rossman stores over time.
 
-## Setup
+The data given includes the daily sales number of Rossman stores
+from January 2014 to July 2015.
+
+In addition, information on the individual stores is provided,
+such as the type of store, the assortment of items sold, etc.
+
+## Result
+
+The best trained model was X.
+
+It achieved an error of X using the root mean square percentage error (RMSPE):
+
+![](./assets/rmspe.png)
+
+- ToDo: Include result plot
+
+## Usage
+
+Here we describe how to train
+
+### Setup
 
 Create a virtual environment, and install the required packages using
 
@@ -11,7 +31,11 @@ Create a virtual environment, and install the required packages using
 pip -r requirements.txt
 ```
 
-## Creating a Prediction
+### Training the model
+
+ToDo: Add details here
+
+### Creating a Prediction
 
 To create a model prediction and Kaggle submission file, run:
 
@@ -32,25 +56,33 @@ model is used.
 
 ### High priority
 
-- Train Test Split
-- Hyperparameter Optimization of Random Forest
-- Write down what we did yesterday
-- Add features
-  - Days to January, Days to Christmas
-  - Deal with holidays better
+- Hyperparameter Optimization of LightGBM (GridCV)
+- TargetEncode Everything
+- Do StandardScaling of Features
+- Add month end, month beginning
+- Add more time frequency variables
+- Days to January, Days to Christmas
+- Encode holidays better
   - Look at Promo2. Add feature whether store runs Promo.
-- Encode existing columns better
-  - Do frequency encoding of Store ID
-- Do prediction and upload Kaggle
-- Set up a clean data processing pipeline
+- Update Readme
+
+### Mediuam priority
+
+- Plot residuals of the prediction
 
 ### Low priority
 
 - Explore data better
 - Try Linear Regression
-  - Do StandardScaling of Features
 - Look at feature importance
 - Look at bimodal distribution of days stores are open. Why?
+
+### Done
+
+- Target encoding of store ID
+- Train Test Split
+- Do prediction and upload Kaggle
+- Set up a clean data processing pipeline
 
 ## Setup
 
