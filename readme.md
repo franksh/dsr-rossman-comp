@@ -9,6 +9,12 @@ from January 2014 to July 2015.
 In addition, information on the individual stores is provided,
 such as the type of store, the assortment of items sold, etc.
 
+### Team Members
+
+- Maryam Faramarzi
+- Naveen Korra
+- Frank Schlosser
+
 ## Result
 
 The best trained model was a LightGBM model.
@@ -83,9 +89,9 @@ model is used.
 Different trained pipelines (including the model)
 are stored under `/data/trained_pipelines/`.
 
-## Further Information
+## Additional Information
 
-## Dataset
+### Dataset
 
 The dataset is made of two csvs:
 
