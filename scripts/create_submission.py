@@ -14,7 +14,8 @@ import numpy as np
 from pipeline import load_pipeline
 from processing import load_holdout_data, process_data, add_store_info, add_week_month_info, add_beginning_end_month
 
-current_best_pipeline = 'random_forest_1'
+# current_best_pipeline = 'random_forest_1'
+current_best_pipeline = 'lightgbm_first'
 
 if __name__ == '__main__':
     # Load the pipeline name from passed arguments
@@ -44,8 +45,8 @@ if __name__ == '__main__':
     holdout = process_data(holdout)
     holdout = add_store_info(holdout)
 
-    cols_to_drop = ['Open', 'StateHoliday', 'Assortment']
-    holdout = holdout.drop(cols_to_drop, axis=1)
+    # cols_to_drop = ['Open', 'StateHoliday', 'Assortment']
+    # holdout = holdout.drop(cols_to_drop, axis=1)
 
 
     # Use the pipeline to predict on holdout
