@@ -60,6 +60,8 @@ def process_data(train_raw, drop_null=True, drop_date=True):
     """ Data Processing """
     train = train_raw.copy()
     train.loc[:, 'StateHoliday'] = train.loc[:, 'StateHoliday'].replace(to_replace='0', value='d')
+    train.loc[:, 'StateHoliday'].replace({'a':1, 'b':2, 'c':3, 'd':4}, inplace = True)
+
 
     # Drop customers, open and Date
     train = train.drop(["Customers", "Open"], axis=1)
