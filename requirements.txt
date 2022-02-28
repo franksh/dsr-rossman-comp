@@ -1,9 +1,10 @@
-numpy==1.19.5
+numpy==1.22
 pandas==1.4.0
 scikit-learn==1.0.2
-scipy==1.5.4
+scipy==1.8.0
 statsmodels==0.13.1
 lightgbm==3.1.1
-matplotlib==3.2.1
+matplotlib==3.5.1
 plotly==5.5.0
-jupyter
+kaleido=0.2.1
+jupyter=1.0.0
