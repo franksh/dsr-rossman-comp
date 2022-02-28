@@ -1,7 +1,9 @@
-# Rossman Kaggle Mini-Competition
+# Rossman Store Sales Prediction
 
-This mini competition is adapted from the Kaggle Rossman challenge.
-The goal is to predict the sales number of Rossman stores over time.
+This project was a mini competition done at the [Data Science Retreat Berlin](https://datascienceretreat.com/.)
+
+The goal of this project was to predict the sales number of Rossman stores
+over time. The data was adapted from the [Kaggle Rossman challenge](https://www.kaggle.com/c/rossmann-store-sales).
 
 The data given includes the daily sales number of Rossman stores
 from January 2014 to July 2015.
@@ -17,7 +19,13 @@ such as the type of store, the assortment of items sold, etc.
 
 ## Result
 
-The best trained model was a LightGBM model.
+We performed data exploration, data cleaning and feature engineering.
+
+We trained several models, including Linear Regression, Random Forest Regressors
+and Gradient Boosted Trees, and performed hyperparameter optimization.
+
+The best performing model was a Gradient Boosted Tree implemented with the
+[LightGBM](https://lightgbm.readthedocs.io/en/latest/) library.
 
 It achieved an error of 16.174% on the test data
 using the root mean square percentage error (RMSPE):
@@ -57,7 +65,9 @@ pip install -r requirements.txt
 
 ### Testing a model
 
-The pre-trained models are stored under `data/trained_models/`
+We implemented some utility to make it easy to save and load model.
+
+Pre-trained models are stored under `data/trained_models/`
 
 To evaluate a model, run:
 
