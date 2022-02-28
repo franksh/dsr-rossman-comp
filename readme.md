@@ -17,23 +17,35 @@ such as the type of store, the assortment of items sold, etc.
 - Naveen Korra
 - Frank Schlosser
 
-## Result
+## Summary
 
-We performed data exploration, data cleaning and feature engineering.
+_Note_: A detailed explanation of our methodology and results is given in the notebook
+[notebooks/0_summary](notebooks/0_summary.ipynb).
+
+We performed data exploration, data cleaning and feature engineering of the original Rossman store data.
 
 We trained several models, including Linear Regression, Random Forest Regressors
 and Gradient Boosted Trees, and performed hyperparameter optimization.
 
-The best performing model was a Gradient Boosted Tree implemented with the
-[LightGBM](https://lightgbm.readthedocs.io/en/latest/) library.
-
-It achieved an error of 16.174% on the test data
-using the root mean square percentage error (RMSPE):
+We used the root mean square percentage error (RMSPE)
+as an evaluation metric.
 
 ![](./assets/rmspe.png)
 
-A more detailed explanation of the model is given in the notebook
-[model_analysis](notebooks/model_explanation.ipynb)
+### Result
+
+| Model                 | RMSPE |
+| --------------------- | ----- |
+| Naive model (mean)    | 62.03 |
+| Linear Regression     | 22.81 |
+| Random Forest         | 17.07 |
+| Gradient Bossted Tree | 12.38 |
+
+The best performing model was a Gradient Boosted Tree implemented with the
+[LightGBM](https://lightgbm.readthedocs.io/en/latest/) library.
+
+On the holdout dataset of the competition,
+the GBT achieved an RMSPE of 16.17%.
 
 Comparison of prediction vs. actual sales per day:
 
