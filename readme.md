@@ -1,6 +1,6 @@
 # Rossman Store Sales Prediction
 
-This project was a mini competition done at the [Data Science Retreat Berlin](https://datascienceretreat.com/.)
+This project was a mini competition done at the [Data Science Retreat Berlin](https://datascienceretreat.com/).
 
 The goal of this project was to predict the sales number of Rossman stores
 over time. The data was adapted from the [Kaggle Rossman challenge](https://www.kaggle.com/c/rossmann-store-sales).
@@ -17,9 +17,9 @@ such as the type of store, the assortment of items sold, etc.
 - Naveen Korra
 - Frank Schlosser
 
-## Summary
+## Overview
 
-_Note_: A detailed explanation of our methodology and results is given in the notebook
+A explanation our methodology and results is given in the notebook
 [notebooks/0_summary](notebooks/0_summary.ipynb).
 
 We performed data exploration, data cleaning and feature engineering of the original Rossman store data.
@@ -27,12 +27,18 @@ We performed data exploration, data cleaning and feature engineering of the orig
 We trained several models, including Linear Regression, Random Forest Regressors
 and Gradient Boosted Trees, and performed hyperparameter optimization.
 
+The steps are also described in the notebooks:
+
+- [notebooks/1_data_exploration](notebooks/1_data_exploration.ipynb)
+- [notebooks/2_simple_models](notebooks/2_simple_models.ipynb)
+- [notebooks/3_advanced_models](notebooks/3_advanced_models.ipynb)
+
+### Result
+
 We used the root mean square percentage error (RMSPE)
 as an evaluation metric.
 
 ![](./assets/rmspe.png)
-
-### Result
 
 | Model                 | RMSPE |
 | --------------------- | ----- |
@@ -41,7 +47,7 @@ as an evaluation metric.
 | Random Forest         | 17.07 |
 | Gradient Bossted Tree | 12.38 |
 
-The best performing model was a Gradient Boosted Tree implemented with the
+The best performing model was a **Gradient Boosted Tree** implemented with the
 [LightGBM](https://lightgbm.readthedocs.io/en/latest/) library.
 
 On the holdout dataset of the competition,
@@ -52,6 +58,8 @@ Comparison of prediction vs. actual sales per day:
 ![](./data/results.png)
 
 ## Usage
+
+Here we describe how you can recreate the results, using our pre-trained models or by training them yourself.
 
 ### Setup
 
@@ -75,7 +83,7 @@ Then install the required packages using
 pip install -r requirements.txt
 ```
 
-### Testing a model
+### Using a pre-trained model
 
 We implemented some utility to make it easy to save and load model.
 
@@ -115,7 +123,7 @@ are stored under `/data/trained_pipelines/`.
 
 ### Dataset
 
-The dataset is made of two csvs:
+The dataset is consists of two csvs:
 
 ```
 #  store.csv
