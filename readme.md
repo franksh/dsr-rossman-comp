@@ -73,7 +73,7 @@ cd dsr-rossman-comp
 Create a virtual environment using Python `3.8`, for example using `conda`.
 
 ```bash
-conda create -n rossman-comp python=3.8
+conda create -n rossman-comp python=3.8.12 pip ipykernel
 conda activate rossman-comp
 ```
 
@@ -82,6 +82,8 @@ Then install the required packages using
 ```bash
 pip install -r requirements.txt
 ```
+Make the Kernel visible using
+
 ```bash
 python -m ipykernel install --user --name rossman-comp --display-name "rossman-comp"
 ```
