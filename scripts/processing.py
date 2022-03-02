@@ -5,6 +5,11 @@ from sklearn.model_selection import train_test_split
 
 
 def load_train_data():
+    """ Load the raw training dataset. 
+    
+    Contains the daily sales number of Rossman
+    stores, distinguished by store.
+    """
     train_raw = pd.read_csv("../data/train.csv",
                     parse_dates=[0],
                     dtype = {
@@ -13,9 +18,12 @@ def load_train_data():
     return train_raw
 
 def load_holdout_data():
+    """ Load the raw holdout dataset. 
+    
+    Same format as train data.
+    """
     holdout_raw = pd.read_csv("../data/holdout_b29.csv",
                     parse_dates=[1],
-                    # index_col=0,
                     dtype = {
                         'StateHoliday': str
                     })
@@ -33,17 +41,14 @@ def add_store_info(train):
     return train
 
 def add_week_month_info(train):
+    """ Add week and month information as another column to the features.
     """
-    Add week and month information as another column to the features
-    """
-    
     train.loc[:,'week'] = train.loc[:,'Date'].dt.isocalendar().week.astype(int)
     train.loc[:,'month'] = train.loc[:,'Date'].dt.month
     return train
 
 def add_beginning_end_month(train):
-    """
-    Add features that represent the beginning and end of months
+    """ Add features that represent the beginning and end of months.
     """
     def get_feature_end_month(day_of_month):
         return (day_of_month/31)**4
@@ -57,7 +62,14 @@ def add_beginning_end_month(train):
     return train
         
 def process_data(train_raw, drop_null=True, drop_date=True):
-    """ Data Processing """
+    """ Some common basic data processing. 
+    
+    This function
+     - Encodes the state holidays
+     - Drops unneeded columns (Customers, Open, Date)
+     - Removes all rows where 'Sales' were 0
+     - Removes all rows with nan values
+    """
     train = train_raw.copy()
     train.loc[:, 'StateHoliday'] = train.loc[:, 'StateHoliday'].replace(to_replace='0', value='d')
     train.loc[:, 'StateHoliday'].replace({'a':1, 'b':2, 'c':3, 'd':4}, inplace = True)
@@ -80,7 +92,8 @@ def process_data(train_raw, drop_null=True, drop_date=True):
     return train
 
 
-def metric(preds, actuals):    
+def metric(preds, actuals):
+    """ Score function using the root mean square percentage error (RMSPE) """
     preds = preds.reshape(-1)
     actuals = actuals.reshape(-1)
     assert preds.shape == actuals.shape
