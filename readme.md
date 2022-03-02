@@ -82,6 +82,9 @@ Then install the required packages using
 ```bash
 pip install -r requirements.txt
 ```
+```bash
+python -m ipykernel install --user --name rossman-comp --display-name "rossman-comp"
+```
 
 ### Using a pre-trained model
 
