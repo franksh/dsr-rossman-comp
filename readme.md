@@ -40,12 +40,12 @@ as an evaluation metric.
 
 ![](./assets/rmspe.png)
 
-| Model                 | RMSPE |
-| --------------------- | ----- |
-| Naive model (mean)    | 62.03 |
-| Linear Regression     | 22.81 |
-| Random Forest         | 17.07 |
-| Gradient Bossted Tree | 12.38 |
+| Model                  | RMSPE |
+| ---------------------- | ----- |
+| Naive model (mean)     | 62.03 |
+| Linear Regression      | 22.81 |
+| Random Forest          | 17.07 |
+| Gradient Boosted Trees | 12.38 |
 
 The best performing model was a **Gradient Boosted Tree** implemented with the
 [LightGBM](https://lightgbm.readthedocs.io/en/latest/) library.
@@ -82,6 +82,7 @@ Then install the required packages using
 ```bash
 pip install -r requirements.txt
 ```
+
 Make the Kernel visible using
 
 ```bash
